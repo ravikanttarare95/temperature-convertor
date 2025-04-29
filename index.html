@@ -57,17 +57,13 @@
             margin: 30px 0 60px 0;
         }
 
-        input,
-        #result {
+        input {
             height: 30px;
             width: 45%;
             border-radius: 10px;
             border: 1px solid #91919e;
             text-align: end;
             color: #767575;
-        }
-
-        #result {
             padding: 4px 12px 0 0;
         }
 
@@ -121,9 +117,9 @@
         </div>
 
         <div class="input-container">
-            <input type="number" id="celsius" placeholder="℃" required>
-            <p id="result"> ℉</p>
-            <!-- <input type="number" id="fahrenheit" placeholder="°F" required> -->
+            <input type="text" id="celsius" placeholder="℃" required>
+
+            <input type="text" id="fahrenheit" placeholder="℉" required>
         </div>
 
         <div class="buttons-container">
@@ -133,20 +129,34 @@
     </div>
 
     <script>
-        const inputCelsius = document.getElementById("celsius");
-        const resultOut = document.getElementById("result");
+        const accessCelsius = document.getElementById("celsius");
+        const accessFahrenheit = document.getElementById("fahrenheit");
 
         function convert() {
+            if (accessCelsius.value && !accessFahrenheit.value) {
+                convertToFahrenheit()
+            }
+            else if (!accessCelsius.value && accessFahrenheit.value) {
+                convertToCelsius()
+            }
+        }
+        function convertToFahrenheit() {
             // Formula to Convert Celsius/Fahrenheit
-            const outputFahrenheit = (parseFloat(inputCelsius.value) * 9 / 5) + 32;
-            resultOut.innerText = `${outputFahrenheit} ℉`;
+            const outputFahrenheit = (parseFloat(accessCelsius.value) * 9 / 5) + 32;
+            accessFahrenheit.value = `${outputFahrenheit.toFixed(2)} ℉`;
+        }
+
+        function convertToCelsius() {
+            // Formula to Convert Fahrenheit to Celsius
+            const outputCelsius = ((parseFloat(accessFahrenheit.value) - 32) * 5 / 9);
+            accessCelsius.value = `${outputCelsius.toFixed(2)} ℃`;
+
         }
 
         function reset() {
-            inputCelsius.value = " ";
-            resultOut.innerText = ` ℉ `;
+            accessCelsius.value = "℃";
+            accessFahrenheit.value = `℉`;
         }
-
     </script>
 </body>
 
