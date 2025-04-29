@@ -11,6 +11,12 @@
     <title>Celsius to Fahrenheit</title>
 
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             background: #cce6ff;
             font-family: "Cantora One", sans-serif;
@@ -19,7 +25,7 @@
         .convertor-box {
             width: 300px;
             height: 350px;
-            margin: 0 auto;
+            margin: 50px auto;
             padding: 20px;
             border-radius: 20px;
             background-color: #ffffff;
@@ -51,14 +57,19 @@
             margin: 30px 0 60px 0;
         }
 
-        input {
+        input,
+        #result {
             height: 30px;
             width: 45%;
             border-radius: 10px;
             border: 1px solid #91919e;
             text-align: end;
+            color: #767575;
         }
 
+        #result {
+            padding: 4px 12px 0 0;
+        }
 
         .buttons-container {
             display: flex;
@@ -66,8 +77,6 @@
             justify-content: center;
             align-items: center;
             gap: 20px;
-
-
         }
 
         button {
@@ -85,35 +94,59 @@
             color: #ffffff;
         }
 
+        .btn-convert:hover {
+            background-color: #0761ba;
+        }
+
         .btn-reset {
-            background-color: #e0e2e3;
+            background-color: #e3e0e0;
             color: #5a5a5a;
+        }
+
+        .btn-reset:hover {
+            background-color: #bdbdbd;
+            color: #434141;
         }
     </style>
 </head>
 
 <body>
-    (°C × 9/5) + 32 = °F
     <div class="convertor-box">
         <img class="thermometer-icon" src="./img/thermometer-icon.png" alt="Thermometer Icon" width="35px">
 
         <div class="heading-container">
 
-            <h1 class="heading">℃ to ℉ Convertor</h1>
+            <h1 class="heading">℃-℉ Convertor</h1>
         </div>
 
         <div class="input-container">
-            <input type="number" id="celsius" placeholder="°C" required>
-
-            <input type="number" id="Fahrenheit" placeholder="°F" required>
+            <input type="number" id="celsius" placeholder="℃" required>
+            <p id="result"> ℉</p>
+            <!-- <input type="number" id="fahrenheit" placeholder="°F" required> -->
         </div>
 
         <div class="buttons-container">
-            <button type="button" class="btn-convert">Convert</button>
-            <button type="button" class="btn-reset">Reset</button>
-
+            <button type="button" class="btn-convert" onclick="convert()">Convert</button>
+            <button type="button" class="btn-reset" onclick="reset()">Reset</button>
         </div>
     </div>
+
+    <script>
+        const inputCelsius = document.getElementById("celsius");
+        const resultOut = document.getElementById("result");
+
+        function convert() {
+            // Formula to Convert Celsius/Fahrenheit
+            const outputFahrenheit = (parseFloat(inputCelsius.value) * 9 / 5) + 32;
+            resultOut.innerText = `${outputFahrenheit} ℉`;
+        }
+
+        function reset() {
+            inputCelsius.value = " ";
+            resultOut.innerText = ` ℉ `;
+        }
+
+    </script>
 </body>
 
 </html>
