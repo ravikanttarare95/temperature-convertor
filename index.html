@@ -1,12 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cantora+One&display=swap" rel="stylesheet">
+
     <title>Celsius to Fahrenheit</title>
+
+    <style>
+        body {
+            background: #cce6ff;
+            font-family: "Cantora One", sans-serif;
+        }
+
+        .convertor-box {
+            width: 300px;
+            height: 350px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 20px 0 #bababa;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
+        .heading-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .heading {
+            color: #3d3d5c;
+        }
+
+        .thermometer-icon {
+            display: block;
+            margin: 0 auto;
+        }
+
+        .input-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            margin: 30px 0 60px 0;
+        }
+
+        input {
+            height: 30px;
+            width: 45%;
+            border-radius: 10px;
+            border: 1px solid #91919e;
+            text-align: end;
+        }
+
+
+        .buttons-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+
+
+        }
+
+        button {
+            width: 100%;
+            height: 30px;
+            border-radius: 7px;
+            padding: 3px 0;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+        }
+
+        .btn-convert {
+            background-color: #1a8cff;
+            color: #ffffff;
+        }
+
+        .btn-reset {
+            background-color: #e0e2e3;
+            color: #5a5a5a;
+        }
+    </style>
 </head>
+
 <body>
-    (0°C × 9/5) + 32 = 32°F
- 
+    (°C × 9/5) + 32 = °F
+    <div class="convertor-box">
+        <img class="thermometer-icon" src="./img/thermometer-icon.png" alt="Thermometer Icon" width="35px">
+
+        <div class="heading-container">
+
+            <h1 class="heading">℃ to ℉ Convertor</h1>
+        </div>
+
+        <div class="input-container">
+            <input type="number" id="celsius" placeholder="°C" required>
+
+            <input type="number" id="Fahrenheit" placeholder="°F" required>
+        </div>
+
+        <div class="buttons-container">
+            <button type="button" class="btn-convert">Convert</button>
+            <button type="button" class="btn-reset">Reset</button>
+
+        </div>
+    </div>
 </body>
+
 </html>
