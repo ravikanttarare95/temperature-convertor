@@ -49,7 +49,7 @@
             margin: 0 auto;
         }
 
-        .input-container {
+        .inputs-container {
             display: flex;
             flex-direction: row;
             justify-content: space-between;
@@ -57,14 +57,34 @@
             margin: 30px 0 60px 0;
         }
 
+        .input-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* To remove Spinner Controls*/
+        /* Chrome, Safari, Edge, Opera */
+        /* input::-webkit-inner-spin-button,
+        input::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }*/
+
+        /* Firefox */
+        /* input {
+            -moz-appearance: textfield;
+        }*/
+
+
         input {
             height: 30px;
-            width: 45%;
+            width: 90%;
             border-radius: 10px;
             border: 1px solid #91919e;
-            text-align: end;
+            text-align: center;
             color: #767575;
-            padding: 4px 12px 0 0;
         }
 
         .buttons-container {
@@ -113,13 +133,16 @@
 
         <div class="heading-container">
 
-            <h1 class="heading">℃-℉ Convertor</h1>
+            <h1 class="heading">℃/℉ Convertor</h1>
         </div>
 
-        <div class="input-container">
-            <input type="text" id="celsius" placeholder="℃" required>
-
-            <input type="text" id="fahrenheit" placeholder="℉" required>
+        <div class="inputs-container">
+            <div class="input-container"><input type="number" id="celsius" placeholder="" required>
+                <p>℃</p>
+            </div>
+            <div class="input-container"><input type="number" id="fahrenheit" placeholder="" required>
+                <p>℉</p>
+            </div>
         </div>
 
         <div class="buttons-container">
@@ -139,23 +162,29 @@
             else if (!accessCelsius.value && accessFahrenheit.value) {
                 convertToCelsius()
             }
+            else if (!accessCelsius.value && !accessFahrenheit.value) {
+                alert("Please enter a valid number.");
+            }
+            else {
+                alert("Please enter a number in only one field.");
+            }
         }
         function convertToFahrenheit() {
             // Formula to Convert Celsius/Fahrenheit
             const outputFahrenheit = (parseFloat(accessCelsius.value) * 9 / 5) + 32;
-            accessFahrenheit.value = `${outputFahrenheit.toFixed(2)} ℉`;
+            accessFahrenheit.value = `${outputFahrenheit.toFixed(2)}`;// ℉
         }
 
         function convertToCelsius() {
             // Formula to Convert Fahrenheit to Celsius
             const outputCelsius = ((parseFloat(accessFahrenheit.value) - 32) * 5 / 9);
-            accessCelsius.value = `${outputCelsius.toFixed(2)} ℃`;
+            accessCelsius.value = `${outputCelsius.toFixed(2)}`;// ℃
 
         }
 
         function reset() {
-            accessCelsius.value = "℃";
-            accessFahrenheit.value = `℉`;
+            accessCelsius.value = "";
+            accessFahrenheit.value = "";
         }
     </script>
 </body>
